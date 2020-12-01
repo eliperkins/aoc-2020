@@ -11,8 +11,7 @@ dockerfile=$(mktemp)
 echo "FROM swift:$swift-$ubuntu"    >  $dockerfile
 echo 'ADD . aoc-2020'               >> $dockerfile
 echo 'WORKDIR aoc-2020'             >> $dockerfile
-echo 'RUN apt-get update && apt-get install -y make' >> $dockerfile
-echo "RUN make $action"             >> $dockerfile
+echo "RUN swift $action"            >> $dockerfile
 image=drstring
 docker image rm -f "$image" > /dev/null
 docker build -t "$image" -f $dockerfile .
