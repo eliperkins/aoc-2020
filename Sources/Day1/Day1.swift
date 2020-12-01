@@ -1,35 +1,19 @@
-public func solve(_ input: String) -> Int {
-    func findMatch(_ values: [Int]) -> (Int, Int)? {
-        guard let lhs = values.first else { return nil }
-        let rest = values.dropFirst()
-        for rhs in rest {
-            if lhs + rhs == 2020 {
-                return (lhs, rhs)
-            }
-        }
-        return findMatch(Array(rest))
-    }
+import Algorithms
 
+func findMatch(_ values: [Int], size: Int) -> Int? {
+    values.combinations(ofCount: size)
+        .first(where: { $0.reduce(0, +) == 2020 })?
+        .reduce(1, *)
+}
+
+public func solve(_ input: String) -> Int {
     let values = input.split(whereSeparator: \.isNewline).compactMap { Int($0) }
-    guard let match = findMatch(values) else { fatalError("No matches!") }
-    return match.0 * match.1
+    guard let match = findMatch(values, size: 2) else { fatalError("No matches!") }
+    return match
 }
 
 public func solvePartTwo(_ input: String) -> Int {
-    func findMatch(_ values: [Int]) -> (Int, Int, Int)? {
-        guard let first = values.first else { return nil }
-        let rest = values.dropFirst()
-        for second in rest {
-            for third in rest.dropFirst() {
-                if first + second + third == 2020 {
-                    return (first, second, third)
-                }
-            }
-        }
-        return findMatch(Array(rest))
-    }
-
     let values = input.split(whereSeparator: \.isNewline).compactMap { Int($0) }
-    guard let match = findMatch(values) else { fatalError("No matches!") }
-    return match.0 * match.1 * match.2
+    guard let match = findMatch(values, size: 3) else { fatalError("No matches!") }
+    return match
 }
