@@ -7,13 +7,28 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  macos:
+    name: macOS
     runs-on: macos-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Build
       run: swift build -v
     - name: Run tests
       run: swift test -v
+  ubuntu:
+    name: Ubuntu
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        swift:
+          - 5.3.1
+        ubuntu:
+          - focal
+        action:
+          - build
+          - test
+    steps:
+    - uses: actions/checkout@v2
+    - name: Action
+      run: Scripts/ubuntu.sh ${{ matrix.action }} ${{ matrix.swift }} ${{ matrix.ubuntu }}
