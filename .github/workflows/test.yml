@@ -21,14 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        swift:
-          - 5.3.1
-        ubuntu:
-          - focal
         action:
           - build
           - test
     steps:
     - uses: actions/checkout@v2
     - name: Action
-      run: Scripts/ubuntu.sh ${{ matrix.action }} ${{ matrix.swift }} ${{ matrix.ubuntu }}
+      run: Scripts/ubuntu.sh ${{ matrix.action }}
