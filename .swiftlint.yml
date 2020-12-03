@@ -7,3 +7,7 @@ excluded:
 disabled_rules:
   - file_length
   - large_tuple
+identifier_name:
+  excluded:
+    - x
+    - y
