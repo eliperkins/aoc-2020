@@ -19,13 +19,13 @@ final class Day2Tests: XCTestCase {
     }
 }
 
-fileprivate let testInput = """
+private let testInput = """
 1-3 a: abcde
 1-3 b: cdefg
 2-9 c: ccccccccc
 """
 
-fileprivate let solutionInput = """
+private let solutionInput = """
 8-9 n: nnnnnnnnn
 14-15 d: dzjgbdwdkdhdddh
 16-17 m: mmmmmmmmmxmmmmwmm

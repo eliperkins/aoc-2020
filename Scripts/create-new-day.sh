@@ -12,6 +12,7 @@ public enum Day${day} {
     }
 }
 SWIFT
+
 cat > "Tests/AdventOfCode2020Tests/Day${day}Tests.swift" << SWIFT
 import AdventOfCode2020
 import XCTest
@@ -34,11 +35,11 @@ final class Day${day}Tests: XCTestCase {
     }
 }
 
-fileprivate let testInput = """
+private let testInput = """
 
 """
 
-fileprivate let solutionInput = """
+private let solutionInput = """
 
 """
 SWIFT

@@ -19,7 +19,7 @@ final class Day1Tests: XCTestCase {
     }
 }
 
-fileprivate let testInput = """
+private let testInput = """
 1721
 979
 366
@@ -28,7 +28,7 @@ fileprivate let testInput = """
 1456
 """
 
-fileprivate let solutionInput = """
+private let solutionInput = """
 1728
 1621
 1856

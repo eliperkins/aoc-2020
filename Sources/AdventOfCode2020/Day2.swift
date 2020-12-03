@@ -3,13 +3,13 @@ import Foundation
 func parseInput(_ input: String) -> [(Int, Int, Character, String)] {
     input.split(whereSeparator: \.isNewline)
         .compactMap { line -> (Int, Int, Character, String)? in
-            let xs = line.split(separator: ":")
-            guard let rule = xs.first, 
-                let passwordValue = xs.last
+            let parts = line.split(separator: ":")
+            guard let rule = parts.first,
+                let passwordValue = parts.last
                 else { return nil }
             let ruleValues = rule.split(separator: " ")
-            guard let rangeString = ruleValues.first, 
-                let character = ruleValues.last 
+            guard let rangeString = ruleValues.first,
+                let character = ruleValues.last
                 else { return nil }
 
             let password = String(passwordValue).trimmingCharacters(in: .whitespacesAndNewlines)
@@ -40,10 +40,10 @@ public enum Day2 {
                 let firstMatch = characters[lower - 1] == character
                 let secondMatch = characters[upper - 1] == character
                 switch (firstMatch, secondMatch) {
-                    case (true, false), (false, true):
-                        return true
-                    default:
-                        return false
+                case (true, false), (false, true):
+                    return true
+                default:
+                    return false
                 }
             }
             .count
