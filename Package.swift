@@ -6,12 +6,8 @@ let package = Package(
     name: "aoc-2020",
     products: [
         .library(
-            name: "Day1",
-            targets: ["Day1"]
-        ),
-        .library(
-            name: "Day2",
-            targets: ["Day2"]
+            name: "AdventOfCode2020",
+            targets: ["AdventOfCode2020"]
         ),
     ],
     dependencies: [
@@ -19,20 +15,12 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Day1",
-            dependencies: [.product(name: "Algorithms", package: "swift-algorithms")]
-        ),
-        .target(
-            name: "Day2",
+            name: "AdventOfCode2020",
             dependencies: [.product(name: "Algorithms", package: "swift-algorithms")]
         ),
         .testTarget(
-            name: "Day1Tests",
-            dependencies: ["Day1"]
-        ),
-        .testTarget(
-            name: "Day2Tests",
-            dependencies: ["Day2"]
+            name: "AdventOfCode2020Tests",
+            dependencies: ["AdventOfCode2020"]
         ),
     ]
 )

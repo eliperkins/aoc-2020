@@ -1,31 +1,31 @@
-import Day2
+import AdventOfCode2020
 import XCTest
 
 final class Day2Tests: XCTestCase {
     func test_part1_test() {
-        XCTAssertEqual(countValidPasswords(from: testInput), 2)
+        XCTAssertEqual(Day2.countValidPasswords(from: testInput), 2)
     }
 
     func test_part1_solution() {
-        XCTAssertEqual(countValidPasswords(from: solutionInput), 538)
+        XCTAssertEqual(Day2.countValidPasswords(from: solutionInput), 538)
     }
 
     func test_part2_test() {
-        XCTAssertEqual(countNewValidPasswords(from: testInput), 1)
+        XCTAssertEqual(Day2.countNewValidPasswords(from: testInput), 1)
     }
 
     func test_part2_solution() {
-        XCTAssertEqual(countNewValidPasswords(from: solutionInput), 489)
+        XCTAssertEqual(Day2.countNewValidPasswords(from: solutionInput), 489)
     }
 }
 
-let testInput = """
+fileprivate let testInput = """
 1-3 a: abcde
 1-3 b: cdefg
 2-9 c: ccccccccc
 """
 
-let solutionInput = """
+fileprivate let solutionInput = """
 8-9 n: nnnnnnnnn
 14-15 d: dzjgbdwdkdhdddh
 16-17 m: mmmmmmmmmxmmmmwmm

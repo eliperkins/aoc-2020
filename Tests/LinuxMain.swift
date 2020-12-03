@@ -1,8 +1,8 @@
 import XCTest
 
-import Day1Tests
+import AdventOfCode2020Tests
 
 var tests = [XCTestCaseEntry]()
-tests += Day1Tests.__allTests()
+tests += AdventOfCode2020Tests.__allTests()
 
 XCTMain(tests)

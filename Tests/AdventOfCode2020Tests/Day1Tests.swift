@@ -1,25 +1,25 @@
-import Day1
+import AdventOfCode2020
 import XCTest
 
 final class Day1Tests: XCTestCase {
     func test_part1_test() {
-        XCTAssertEqual(solve(testInput), 514579)
+        XCTAssertEqual(Day1.solve(testInput), 514579)
     }
 
     func test_part1_solution() {
-        XCTAssertEqual(solve(solutionInput), 211899)
+        XCTAssertEqual(Day1.solve(solutionInput), 211899)
     }
 
     func test_part2_test() {
-        XCTAssertEqual(solvePartTwo(testInput), 241861950)
+        XCTAssertEqual(Day1.solvePartTwo(testInput), 241861950)
     }
 
     func test_part2_solution() {
-        XCTAssertEqual(solvePartTwo(solutionInput), 275765682)
+        XCTAssertEqual(Day1.solvePartTwo(solutionInput), 275765682)
     }
 }
 
-let testInput = """
+fileprivate let testInput = """
 1721
 979
 366
@@ -28,7 +28,7 @@ let testInput = """
 1456
 """
 
-let solutionInput = """
+fileprivate let solutionInput = """
 1728
 1621
 1856
