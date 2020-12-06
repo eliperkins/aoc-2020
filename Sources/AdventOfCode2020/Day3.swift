@@ -46,7 +46,6 @@ public enum Day3 {
     public static func solvePartTwo(from input: String) -> Int {
         [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
             .reduce(into: 1) { acc, next in
-                print(countTrees(in: input, slopeRight: next.0, slopeDown: next.1))
                 acc *= countTrees(in: input, slopeRight: next.0, slopeDown: next.1)
             }
     }

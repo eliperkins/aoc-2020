@@ -69,11 +69,8 @@ public enum Day4 {
     }
 
     static func passports(from input: String) -> [[String]] {
-        var lines = [String]()
-        input.enumerateLines { (line, _) in
-            lines.append(line)
-        }
-        return lines
+        return input
+            .lines
             .split(whereSeparator: \.isEmpty)
             .map {
                 $0.reduce(into: [String]()) { acc, next in
