@@ -1,3 +1,5 @@
+import Foundation
+
 extension String {
     var lines: [String] {
         var lines = [String]()
