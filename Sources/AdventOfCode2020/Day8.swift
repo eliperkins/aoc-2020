@@ -19,7 +19,7 @@ public enum Day8 {
 
         init?(index: Int, line: String) {
             let parts = line.split(separator: " ")
-            guard let operationValue = parts.first, 
+            guard let operationValue = parts.first,
                 let operation = Operation(rawValue: String(operationValue)),
                 let valueValue = parts.last,
                 let value = Int(valueValue)
@@ -38,7 +38,7 @@ public enum Day8 {
         var acc = 0
         var head = 0
         var completedInstructions = Set<Instruction>()
-        
+
         while instructions.indices.contains(head) {
             let instruction = instructions[head]
             // print("running: \(instruction)")
@@ -79,13 +79,13 @@ public enum Day8 {
             case .nop:
                 instructionsMutation[changeableInstruction.index] = Instruction(
                     operation: .jmp,
-                    value: changeableInstruction.value, 
+                    value: changeableInstruction.value,
                     index: changeableInstruction.index
                 )
             case .jmp:
                 instructionsMutation[changeableInstruction.index] = Instruction(
                     operation: .nop,
-                    value: changeableInstruction.value, 
+                    value: changeableInstruction.value,
                     index: changeableInstruction.index
                 )
             case .acc:
