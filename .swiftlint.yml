@@ -7,8 +7,11 @@ excluded:
 disabled_rules:
   - file_length
   - large_tuple
+  - nesting
 identifier_name:
   excluded:
     - x
     - y
     - id
+    - a
+    - b
