@@ -1,28 +1,28 @@
 import Algorithms
 
 public enum Day9 {
-    struct Preamble {
-        let values: [Int]
-        let length: Int
+    public struct Preamble {
+        public let values: [Int]
+        public let length: Int
 
         private let validNextNumbers: Set<Int>
 
-        init(values: [Int], length: Int? = nil) {
+        public init(values: [Int], length: Int? = nil) {
             self.values = values
             let resolvedLength = length ?? values.count
             self.length = resolvedLength
             self.validNextNumbers = Set(values.suffix(resolvedLength).permutations(ofCount: 2).map { $0.reduce(0, +) })
         }
 
-        func isValidNextNumber(_ number: Int) -> Bool {
+        public func isValidNextNumber(_ number: Int) -> Bool {
             return validNextNumbers.contains(number)
         }
 
-        enum Error: Swift.Error {
+        public enum Error: Swift.Error {
             case invalidValue
         }
 
-        func appending(_ value: Int) throws -> Preamble {
+        public func appending(_ value: Int) throws -> Preamble {
             guard isValidNextNumber(value) else { throw Preamble.Error.invalidValue }
             return Preamble(values: values + [value], length: self.length)
         }

@@ -1,4 +1,4 @@
-@testable import AdventOfCode2020
+import AdventOfCode2020
 import XCTest
 
 final class Day9Tests: XCTestCase {
