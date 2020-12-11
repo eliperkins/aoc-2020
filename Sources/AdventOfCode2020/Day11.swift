@@ -23,7 +23,7 @@ public enum Day11 {
             case .floor: return "."
             case .seat(filled: true): return "#"
             case .seat(filled: false): return "L"
-            }            
+            }
         }
     }
 
@@ -50,13 +50,24 @@ public enum Day11 {
                 .map { $0.map(\.debugDescription).joined() }
                 .joined(separator: "\n")
         }
-        
+
         var filledSeatCount: Int {
             rawValue.reduce(0) { acc, next in
                 acc + next.filter({ $0 == .seat(filled: true ) }).count
             }
         }
     }
+
+    static let directionalSlopes = [
+        (0, 1),
+        (0, -1),
+        (1, 0),
+        (-1, 0),
+        (1, 1),
+        (1, -1),
+        (-1, 1),
+        (-1, -1)
+    ]
 
     static func run(on map: Map) -> Map {
         var mutableMap = map
@@ -65,16 +76,7 @@ public enum Day11 {
             guard let square = map.squareAt(row: row, column: column)
                 else { fatalError("Attempted to mutate invalid square position!") }
 
-            let adjacentPositions = [
-                (row + 1, column),
-                (row - 1, column),
-                (row + 1, column + 1),
-                (row - 1, column + 1),
-                (row + 1, column - 1),
-                (row - 1, column - 1),
-                (row, column + 1),
-                (row, column - 1)
-            ]
+            let adjacentPositions = directionalSlopes.map { ($0 + row, $1 + column) }
 
             switch square {
             case .seat(filled: false):
@@ -119,17 +121,6 @@ public enum Day11 {
             guard let square = map.squareAt(row: row, column: column)
                 else { fatalError("Attempted to mutate invalid square position!") }
 
-            let slopes = [
-                (0, 1),
-                (0, -1),
-                (1, 0),
-                (-1, 0),
-                (1, 1),
-                (1, -1),
-                (-1, 1),
-                (-1, -1)
-            ]
-            
             func findFirstSeat(for slope: (Int, Int), from position: (Int, Int)) -> (Int, Int)? {
                 let square = map.squareAt(row: position.0 + slope.0, column: position.1 + slope.1)
                 switch square {
@@ -144,7 +135,7 @@ public enum Day11 {
 
             switch square {
             case .seat(filled: false):
-                let allEmpty = slopes
+                let allEmpty = directionalSlopes
                     .compactMap({ findFirstSeat(for: $0, from: (row, column)) })
                     .allSatisfy { (row, column) in
                         guard let adjacentSquare = map.squareAt(row: row, column: column) else { return true }
@@ -160,7 +151,7 @@ public enum Day11 {
                     mutableMap.rawValue[row][column] = .seat(filled: true)
                 }
             case .seat(filled: true):
-                let filledSeats = slopes
+                let filledSeats = directionalSlopes
                     .compactMap({ findFirstSeat(for: $0, from: (row, column)) })
                     .compactMap(map.squareAt)
                     .filter { $0 == .seat(filled: true) }
