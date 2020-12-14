@@ -16,30 +16,48 @@ final class Day12Tests: XCTestCase {
     func test_part2_test() {
         XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .right, value: 90).0, 4)
         XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .right, value: 90).1, -10)
-        
+
         XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .right, value: 180).0, -10)
         XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .right, value: 180).1, -4)
-        
+
         XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .right, value: 270).0, -4)
         XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .right, value: 270).1, 10)
-        
+
         XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .left, value: 90).0, -4)
         XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .left, value: 90).1, 10)
 
         XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .left, value: 180).0, -10)
         XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .left, value: 180).1, -4)
-        
+
         XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .left, value: 270).0, 4)
         XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .left, value: 270).1, -10)
 
-        XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .left, value: 270).0, Day12.rotate(waypoint: (10, 4), direction: .right, value: 90).0)
-        XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .left, value: 270).1, Day12.rotate(waypoint: (10, 4), direction: .right, value: 90).1)
+        XCTAssertEqual(
+            Day12.rotate(waypoint: (10, 4), direction: .left, value: 270).0,
+            Day12.rotate(waypoint: (10, 4), direction: .right, value: 90).0
+        )
+        XCTAssertEqual(
+            Day12.rotate(waypoint: (10, 4), direction: .left, value: 270).1,
+            Day12.rotate(waypoint: (10, 4), direction: .right, value: 90).1
+        )
 
-        XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .left, value: 180).0, Day12.rotate(waypoint: (10, 4), direction: .right, value: 180).0)
-        XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .left, value: 180).1, Day12.rotate(waypoint: (10, 4), direction: .right, value: 180).1)
+        XCTAssertEqual(
+            Day12.rotate(waypoint: (10, 4), direction: .left, value: 180).0,
+            Day12.rotate(waypoint: (10, 4), direction: .right, value: 180).0
+        )
+        XCTAssertEqual(
+            Day12.rotate(waypoint: (10, 4), direction: .left, value: 180).1,
+            Day12.rotate(waypoint: (10, 4), direction: .right, value: 180).1
+        )
 
-        XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .left, value: 90).0, Day12.rotate(waypoint: (10, 4), direction: .right, value: 270).0)
-        XCTAssertEqual(Day12.rotate(waypoint: (10, 4), direction: .left, value: 90).1, Day12.rotate(waypoint: (10, 4), direction: .right, value: 270).1)
+        XCTAssertEqual(
+            Day12.rotate(waypoint: (10, 4), direction: .left, value: 90).0,
+            Day12.rotate(waypoint: (10, 4), direction: .right, value: 270).0
+        )
+        XCTAssertEqual(
+            Day12.rotate(waypoint: (10, 4), direction: .left, value: 90).1,
+            Day12.rotate(waypoint: (10, 4), direction: .right, value: 270).1
+        )
 
         XCTAssertEqual(Day12.solvePartTwo(from: testInput), 286)
     }

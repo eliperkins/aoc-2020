@@ -85,36 +85,28 @@ public enum Day12 {
         return abs(endPosition.0) + abs(endPosition.1)
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     public static func rotate(waypoint: (Int, Int), direction: Direction, value: Int) -> (Int, Int) {
         let (x, y) = waypoint
+        let turns = value / 90 % 4
         switch direction {
-        case .left:            
-            switch value / 90 % 4 {
-            case 0:
-                return waypoint
-            case 1:
-                return (-y, x)
-            case 2:
-                return (-x, -y)
-            case 3:
-                return (y, -x)
-            default:
-                fatalError()
+        case .left:
+            switch turns {
+            case 0: return waypoint
+            case 1: return (-y, x)
+            case 2: return (-x, -y)
+            case 3: return (y, -x)
+            default: fatalError("Invalid rotation!")
             }
         case .right:
-            switch value / 90 % 4 {
-            case 0:
-                return waypoint
-            case 1:
-                return (y, -x)
-            case 2:
-                return (-x, -y)
-            case 3:
-                return (-y, x)
-            default:
-                fatalError()
-            }        
-        default: 
+            switch turns {
+            case 0: return waypoint
+            case 1: return (y, -x)
+            case 2: return (-x, -y)
+            case 3: return (-y, x)
+            default: fatalError("Invalid rotation!")
+            }
+        default:
             fatalError("Invalid rotation!")
         }
     }
@@ -125,7 +117,7 @@ public enum Day12 {
 
         let endPosition = instructions.reduce(initialValue) { acc, next in
             let (direction, value) = next
-            
+
             func apply(direction: Direction, to current: (Int, Int, (Int, Int))) -> (Int, Int, (Int, Int)) {
                 let (x, y, waypoint) = current
                 let (waypointX, waypointY) = waypoint
