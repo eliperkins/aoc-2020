@@ -85,7 +85,70 @@ public enum Day12 {
         return abs(endPosition.0) + abs(endPosition.1)
     }
 
+    public static func rotate(waypoint: (Int, Int), direction: Direction, value: Int) -> (Int, Int) {
+        let (x, y) = waypoint
+        switch direction {
+        case .left:            
+            switch value / 90 % 4 {
+            case 0:
+                return waypoint
+            case 1:
+                return (-y, x)
+            case 2:
+                return (-x, -y)
+            case 3:
+                return (y, -x)
+            default:
+                fatalError()
+            }
+        case .right:
+            switch value / 90 % 4 {
+            case 0:
+                return waypoint
+            case 1:
+                return (y, -x)
+            case 2:
+                return (-x, -y)
+            case 3:
+                return (-y, x)
+            default:
+                fatalError()
+            }        
+        default: 
+            fatalError("Invalid rotation!")
+        }
+    }
+
     public static func solvePartTwo(from input: String) -> Int {
-        0
+        let instructions = parseInstructions(from: input)
+        let initialValue: (Int, Int, (Int, Int)) = (0, 0, (10, 1))
+
+        let endPosition = instructions.reduce(initialValue) { acc, next in
+            let (direction, value) = next
+            
+            func apply(direction: Direction, to current: (Int, Int, (Int, Int))) -> (Int, Int, (Int, Int)) {
+                let (x, y, waypoint) = current
+                let (waypointX, waypointY) = waypoint
+                switch direction {
+                case .north:
+                    return (x, y, (waypointX, waypointY + value))
+                case .south:
+                    return (x, y, (waypointX, waypointY - value))
+                case .east:
+                    return (x, y, (waypointX + value, waypointY))
+                case .west:
+                    return (x, y, (waypointX - value, waypointY))
+                case .left:
+                    return (x, y, rotate(waypoint: waypoint, direction: .left, value: value))
+                case .right:
+                    return (x, y, rotate(waypoint: waypoint, direction: .right, value: value))
+                case .forward:
+                    return (x + (value * waypointX), y + (value * waypointY), waypoint)
+                }
+            }
+
+            return apply(direction: direction, to: acc)
+        }
+        return abs(endPosition.0) + abs(endPosition.1)
     }
 }
