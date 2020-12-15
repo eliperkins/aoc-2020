@@ -27,7 +27,7 @@ final class Day15Tests: XCTestCase {
     }
 
     func test_part2_solution() {
-        XCTAssertEqual(Day15.solvePartTwo(from: solutionInput), 1)
+        XCTAssertEqual(Day15.solvePartTwo(from: solutionInput), 16671510)
     }
 }
 
