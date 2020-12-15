@@ -13,17 +13,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: swift build -v
+      run: swift build -v -c release
     - name: Run tests
-      run: swift test -v
+      run: swift test -v -c release
   ubuntu:
     name: Ubuntu
     runs-on: ubuntu-latest
     strategy:
       matrix:
         action:
-          - build
-          - test
+          - build -c release
+          - test -c release
     steps:
     - uses: actions/checkout@v2
     - name: Action

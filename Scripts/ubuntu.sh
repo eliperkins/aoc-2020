@@ -4,7 +4,7 @@ if ! command -v docker > /dev/null; then
     echo "Install docker https://docker.com" >&2
     exit 1
 fi
-action=$1
+action="$*"
 dockerfile=$(mktemp)
 echo "FROM swift:5.3.1-focal"   >  $dockerfile
 echo 'ADD . aoc-2020'           >> $dockerfile
