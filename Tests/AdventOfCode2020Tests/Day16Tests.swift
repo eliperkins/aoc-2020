@@ -11,11 +11,11 @@ final class Day16Tests: XCTestCase {
     }
 
     func test_part2_test() {
-        XCTAssertEqual(Day16.solvePartTwo(from: testInput), 1)
+        XCTAssertEqual(Day16.solvePartTwo(from: testInput2), 1)
     }
 
     func test_part2_solution() {
-        XCTAssertEqual(Day16.solvePartTwo(from: solutionInput), 1)
+        XCTAssertEqual(Day16.solvePartTwo(from: solutionInput), 239727793813)
     }
 }
 
@@ -32,6 +32,20 @@ nearby tickets:
 40,4,50
 55,2,20
 38,6,12
+"""
+
+private let testInput2 = """
+class: 0-1 or 4-19
+row: 0-5 or 8-19
+seat: 0-13 or 16-19
+
+your ticket:
+11,12,13
+
+nearby tickets:
+3,9,18
+15,1,5
+5,14,9
 """
 
 private let solutionInput = """
