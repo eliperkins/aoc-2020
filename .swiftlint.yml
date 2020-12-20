@@ -12,6 +12,12 @@ identifier_name:
   excluded:
     - x
     - y
+    - z
+    - w
+    - dx
+    - dy
+    - dz
+    - dw
     - id
     - a
     - b
