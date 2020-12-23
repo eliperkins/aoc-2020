@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Flexer",
+        "repositoryURL": "https://github.com/ChimeHQ/Flexer.git",
+        "state": {
+          "branch": "fa4a3988",
+          "revision": "fa4a3988648ca4eea157abc5fad3e4c21ad44fe6",
+          "version": null
+        }
+      },
+      {
         "package": "swift-algorithms",
         "repositoryURL": "https://github.com/apple/swift-algorithms.git",
         "state": {
